@@ -50,7 +50,7 @@ input[type="submit"],.panel-body ul li a,.checkout-right-basket a,.additional_in
 	display: block;
     font-size: .3em;
     text-transform: capitalize;
-    letter-spacing: 13px;
+    letter-spacing: 8px;
     padding-left: .5em;
 }
 .w3l_login a {
@@ -3344,7 +3344,7 @@ td.invert-image a img {
 		font-size: .8em;
 	}
 	.w3l_logo h1 a span {
-		letter-spacing: 9.5px;
+		letter-spacing: 5.8px;
 	}
 	.w3l_logo {
 		margin-left: 5em;

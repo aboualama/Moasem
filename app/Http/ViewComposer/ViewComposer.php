@@ -10,6 +10,7 @@ use App\subcategory;
 use App\product; 
 use App\contact; 
 use App\brand; 
+use App\user; 
 use DB;
 use Carbon\Carbon;
 
@@ -19,6 +20,8 @@ class ViewComposer {
     public function compose(View $view) {
  
 		$view->with('all_categories', category::all() );    
+		$view->with('all_users', user::all() );    
+		$view->with('inactiveusers', user::where('status' , 'inactive')->count() );    
 		$view->with('all_subcategories', subcategory::all() );   
 		$view->with('all_products', product::all() );   
 		$view->with('all_brands', brand::all() );      

@@ -41,6 +41,7 @@ class PaymentController extends Controller
         $this->apiContext->setConfig(config('paypal.settings'));
     }
 
+    
     public function payWithPaypal (Request $request) {
 
         // Insert into orders table

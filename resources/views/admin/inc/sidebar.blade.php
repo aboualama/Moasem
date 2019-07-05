@@ -85,11 +85,15 @@
               <a href="#">
                 <i class="fa fa-user"></i> <span>User</span>
                 <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
+                  <i class="fa fa-angle-left pull-right"></i>   
+                  <span class="pull-right-container">
+                  <small class="label pull-right bg-red">{{$inactiveusers}}</small>
+                    <small class="label pull-right bg-blue">{{$all_users->count()}}</small>
+                  </span>
                 </span>
               </a> 
               <ul class="treeview-menu">
-                <li><a href="/admin/user"><i class="fa fa-circle-o"></i>User</a></li>     
+                <li><a href="/admin/user"><i class="fa fa-circle-o"></i>User</a></li>  
               </ul>
             </li>
         @endif
@@ -116,6 +120,12 @@
           <li class="treeview ">
             <a href="#">
               <i class="fa fa-sticky-note-o"></i> <span>Page</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container"> 
+                  <small class="label pull-right bg-blue">{{$thepages->count()}}</small>
+                </span>
+              </span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -149,6 +159,13 @@
             <a href="#">
               <i class="fa fa-gift"></i> <span>Product</span>
               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container">
+                <small class="label pull-right bg-red">{{$all_products->count()}}</small>
+                  <small class="label pull-right bg-blue">17</small>
+                </span>
+              </span>
+              <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a> 
@@ -163,6 +180,13 @@
           <li class="treeview ">
             <a href="#">
               <i class="fa fa-tag"></i> <span>Category</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container">
+                <small class="label pull-right bg-red">{{$all_categories->count()}}</small>
+                  <small class="label pull-right bg-blue">17</small>
+                </span>
+              </span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -179,6 +203,13 @@
             <a href="#">
               <i class="fa fa-tags"></i> <span>subcategory</span>
               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container">
+                <small class="label pull-right bg-red">{{$all_subcategories->count()}}</small>
+                  <small class="label pull-right bg-blue">17</small>
+                </span>
+              </span>
+              <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a> 
@@ -193,6 +224,13 @@
           <li class="treeview ">
             <a href="#">
               <i class="fa fa-apple "></i> <span>brand</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container">
+                <small class="label pull-right bg-red">{{$all_users->count()}}</small>
+                  <small class="label pull-right bg-blue">17</small>
+                </span>
+              </span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -209,6 +247,13 @@
             <a href="#">
               <i class="fa fa-comments "></i> <span>comment</span>
               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container">
+                <small class="label pull-right bg-red">{{$all_users->count()}}</small>
+                  <small class="label pull-right bg-blue">17</small>
+                </span>
+              </span>
+              <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a> 
@@ -223,6 +268,13 @@
           <li class="treeview ">
             <a href="#">
               <i class="fa fa-barcode "></i> <span>order</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>   
+                <span class="pull-right-container">
+                <small class="label pull-right bg-red">{{$all_users->count()}}</small>
+                  <small class="label pull-right bg-blue">17</small>
+                </span>
+              </span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

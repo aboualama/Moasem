@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'Laravel',
+    'name' => 'Moasem - Store',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://localhost',
@@ -219,7 +219,7 @@
         'connection' => 'default',
       ),
     ),
-    'prefix' => 'laravel_cache',
+    'prefix' => 'moasem_store_cache',
   ),
   'cart' => 
   array (
@@ -573,7 +573,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'laravel_session',
+    'cookie' => 'moasem_store_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => false,

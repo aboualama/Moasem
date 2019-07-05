@@ -72,7 +72,7 @@ Home
                             @foreach($a_category->products->take(3) as $a_tap_pro)
                             <div class="col-md-4 agile_ecommerce_tab_left">
                                 <div style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/') }}/uploads/product/{{$a_tap_pro->photo}}"  class="img-responsive" /> 
+                                    <img src="{{ asset('/uploads/product') }}/{{$a_tap_pro->photo}}"  class="img-responsive" /> 
                                     <div class="w3_hs_bottom">
                                         <ul>
                                             <li>
@@ -101,7 +101,7 @@ Home
                             @foreach($b_category->products->take(3) as $b_tap_pro)
                             <div class="col-md-4 agile_ecommerce_tab_left">
                                 <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/') }}/uploads/product/{{$b_tap_pro->photo}}" alt=" " class="img-responsive" /> 
+                                    <img src="{{ asset('/uploads/product') }}/{{$b_tap_pro->photo}}" alt=" " class="img-responsive" /> 
                                     <div class="w3_hs_bottom">
                                         <ul>
                                             <li>
@@ -130,7 +130,7 @@ Home
                             @foreach($c_category->products->take(3) as $c_tap_pro)
                             <div class="col-md-4 agile_ecommerce_tab_left">
                                 <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/') }}/uploads/product/{{$c_tap_pro->photo}}" alt=" " class="img-responsive" /> 
+                                    <img src="{{ asset('/uploads/product') }}/{{$c_tap_pro->photo}}" alt=" " class="img-responsive" /> 
                                     <div class="w3_hs_bottom">
                                         <ul>
                                             <li>
@@ -159,7 +159,7 @@ Home
                             @foreach($d_category->products->take(3) as $d_tap_pro)
                             <div class="col-md-4 agile_ecommerce_tab_left">
                                 <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/') }}/uploads/product/{{$d_tap_pro->photo}}" alt=" " class="img-responsive" /> 
+                                    <img src="{{ asset('/uploads/product') }}/{{$d_tap_pro->photo}}" alt=" " class="img-responsive" /> 
                                     <div class="w3_hs_bottom">
                                         <ul>
                                             <li>
@@ -188,7 +188,7 @@ Home
                             @foreach($e_category->products->take(3) as $e_tap_pro)
                             <div class="col-md-4 agile_ecommerce_tab_left">
                                 <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/') }}/uploads/product/{{$e_tap_pro->photo}}" alt=" " class="img-responsive" /> 
+                                    <img src="{{ asset('/uploads/product') }}/{{$e_tap_pro->photo}}" alt=" " class="img-responsive" /> 
                                     <div class="w3_hs_bottom">
                                         <ul>
                                             <li>
@@ -226,7 +226,7 @@ Home
                                 <section>
                                     <div class="modal-body">
                                         <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/') }}/uploads/product/{{$a_tap_pro->photo}}" alt=" " class="img-responsive" />
+                                            <img src="{{ asset('/uploads/product') }}/{{$a_tap_pro->photo}}" alt=" " class="img-responsive" />
                                         </div>
                                         <div class="col-md-7 modal_body_right">
                                             <h4>a good look women's shirt</h4>
@@ -287,7 +287,7 @@ Home
                                 <section>
                                     <div class="modal-body">
                                         <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/') }}/uploads/product/{{$b_tap_pro->photo}}" alt=" " class="img-responsive" />
+                                            <img src="{{ asset('/uploads/product') }}/{{$b_tap_pro->photo}}" alt=" " class="img-responsive" />
                                         </div>
                                         <div class="col-md-7 modal_body_right">
                                             <h4>a good look women's shirt</h4>
@@ -348,7 +348,7 @@ Home
                                 <section>
                                     <div class="modal-body">
                                         <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/') }}/uploads/product/{{$c_tap_pro->photo}}" alt=" " class="img-responsive" />
+                                            <img src="{{ asset('/uploads/product') }}/{{$c_tap_pro->photo}}" alt=" " class="img-responsive" />
                                         </div>
                                         <div class="col-md-7 modal_body_right">
                                             <h4>a good look women's shirt</h4>
@@ -409,7 +409,7 @@ Home
                                 <section>
                                     <div class="modal-body">
                                         <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/') }}/uploads/product/{{$d_tap_pro->photo}}" alt=" " class="img-responsive" />
+                                            <img src="{{ asset('/uploads/product') }}/{{$d_tap_pro->photo}}" alt=" " class="img-responsive" />
                                         </div>
                                         <div class="col-md-7 modal_body_right">
                                             <h4>a good look women's shirt</h4>
@@ -470,7 +470,7 @@ Home
                                 <section>
                                     <div class="modal-body">
                                         <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/') }}/uploads/product/{{$e_tap_pro->photo}}" alt=" " class="img-responsive" />
+                                            <img src="{{ asset('/uploads/product') }}/{{$e_tap_pro->photo}}" alt=" " class="img-responsive" />
                                         </div>
                                         <div class="col-md-7 modal_body_right">
                                             <h4>a good look women's shirt</h4>
@@ -632,7 +632,7 @@ Home
                     <div class="w3l_related_products_grid">
                         <div class="agile_ecommerce_tab_left dresses_grid">
                             <div class="hs-wrapper3" style="position: relative;  margin: 0 auto; overflow: hidden;"> 
-                                <img src="{{ asset('web/images') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
+                                <img src="{{ asset('uploads/product') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
                                 <div class="w3_hs_bottom">
                                     <div class="flex_ecommerce">
                                         <a href="{{$newproduct->name}}" data-toggle="modal" data-target="#newModal{{$newproduct->id}}">
@@ -693,7 +693,7 @@ Home
                 <section>
                     <div class="modal-body">
                         <div class="col-md-5 modal_body_left">
-                            <img src="{{ asset('web/images') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
+                            <img src="{{ asset('uploads/product') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
                         </div>
                         <div class="col-md-7 modal_body_right">
                             <h4> {{$newproduct->name}}</h4>
@@ -722,7 +722,7 @@ Home
                     @foreach($all_brands as $brand)
                     <li> 
                         <a href="{{ url('/brand')}}/{{slug($brand->name)}}">
-                            <img src="{{ asset('/') }}/uploads/brand/{{ $brand->img }}" alt=" " class="img-responsive" />
+                            <img src="{{ asset('uploads/brand') }}/{{ $brand->img }}" alt=" " class="img-responsive" />
                         </a> 
                     </li> 
                     @endforeach

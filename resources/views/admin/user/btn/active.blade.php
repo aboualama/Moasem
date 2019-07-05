@@ -1,5 +1,5 @@
   
- <div id="app"> 
+<div id="app"> 
    <input type="checkbox" value="{{$id }}" id="test" {{ ($status == "active") ? 'checked' : ''  }}>   
 </div>
    
@@ -18,12 +18,58 @@
                 '_token': "{{ csrf_token() }}"
               },
               success: function (data) { 
-                    console.log(data);
+                    console.log(event);
               } 
           }); 
       }); 
   
 </script>          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   {{-- $(document).ready(function(){
     $("input:checkbox").change(function() {
