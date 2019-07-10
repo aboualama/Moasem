@@ -38,14 +38,14 @@
             <div class="col-md-4 single-left">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="{{ asset('/') }}/uploads/product/{{$product->photo}}">
-                            <div class="thumb-image"> <img src="{{ asset('/') }}/uploads/product/{{$product->photo}}" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{ asset('uploads/product') }}/{{$product->photo}}">
+                            <div class="thumb-image"> <img src="{{ asset('uploads/product') }}/{{$product->photo}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{ asset('web') }}/images/b.jpg">
-                             <div class="thumb-image"> <img src="{{ asset('web') }}/images/b.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{ asset('uploads/product') }}/{{$product->photo}}">
+                             <div class="thumb-image"> <img src="{{ asset('uploads/product') }}/{{$product->photo}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{ asset('web') }}/images/c.jpg">
-                           <div class="thumb-image"> <img src="{{ asset('web') }}/images/c.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                        <li data-thumb="{{ asset('uploads/product') }}/{{$product->photo}}">
+                           <div class="thumb-image"> <img src="{{ asset('uploads/product') }}/{{$product->photo}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li> 
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="color-quality">
                         <a href="{{ url('/brand')}}/{{slug($product->brand->name)}}">
-                            <img src="{{ asset('/') }}/uploads/brand/{{ $product->brand->img }}" alt=" " class="img-responsive" />
+                            <img src="{{ asset('/uploads/brand') }}/{{ $product->brand->img }}" alt=" " class="img-responsive" />
                         </a> 
                     </div>
                     <div class="simpleCart_shelfItem">

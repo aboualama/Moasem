@@ -72,7 +72,7 @@
 
                     @foreach($products as $product)
 
-                        <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses">
+                        <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses" id="product{{$product->id}}">
                             <div class="agile_ecommerce_tab_left dresses_grid">
                                 <div class=" hs-wrapper2" style="position: relative;  margin: 0 auto; overflow: hidden;">
                                     <img src="{{ asset('uploads/product') }}/{{$product->photo}}" alt=" " class="img-responsive" /> 
@@ -87,7 +87,7 @@
                                 <h5><a href="{{url('product')}}/{{$product->id}}">{{$product->name}}</a></h5>
                                 <div class="simpleCart_shelfItem">
                                     <p><span>$420</span> <i class="item_price">{{$product->price}}</i></p>
-                                    <p><a class="item_add" href="{{url('cart/add')}}/{{$product->id}}">Add to cart</a></p>
+                                    <p><a class="item_add{{$product->id}}" href="{{url('cart/add')}}/{{$product->id}}">Add to cart</a></p>
                                 </div>
                                 @if($product->created_at > Carbon\Carbon::now()->subDays(7))
                                     <div class="dresses_grid_pos">
@@ -97,6 +97,35 @@
                             </div>
                         </div> 
                     @endforeach
+
+
+                    
+
+    <script> 
+        $(document).ready(function() {  
+        $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            });  
+            @foreach($products as $product)    
+                $('.item_add{{$product->id}}').on( 'click' , (function(event) {  
+                    event.preventDefault()  ; 
+                    var Id = $("#productId{{$product->id}}").val();  
+                    $.ajax({
+                        url:  '{{url('cart/add')}}/{{$product->id}}',
+                        type: 'GET', 
+                        data:  { id: Id }, 
+                        success: function(response)
+                            {  
+                                $("#product{{$product->id}}").fadeOut(400);  
+                                $("#newproduct{{$product->id}}").fadeOut(400);   
+                                $num = parseInt($('#cartcountitem').text(),10);
+                                $('#cartcountitem').text($num + 1) ;  
+                            },  
+                        })  
+                }));    
+            @endforeach 
+        }); 
+    </script>
                         <div class="clearfix"> </div>
                         <div class="text-center">{{ $products->links() }}</div> 
                     </div>   
@@ -142,7 +171,7 @@
                             </div>
                             <div class="modal_body_right_cart simpleCart_shelfItem">
                                 <p><span>$320</span> <i class="item_price">${{$product->price}}</i></p>
-                                <p><a class="item_add" href="{{url('cart/add')}}/{{$product->id}}">Add to cart </a></p>
+                                <p><a class="modalitem_add{{$product->id}}" href="{{url('cart/add')}}/{{$product->id}}">Add to cart </a></p>
                             </div>
                             <h5>Color</h5>
                             <div class="color-quality">
@@ -157,7 +186,34 @@
                         <div class="clearfix"> </div>
                     </div>
                 </section>
-            </div>
+
+                <script> 
+                    $(document).ready(function() {  
+                    $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                        });   
+                            $('.modalitem_add{{$product->id}}').on( 'click' , (function(event) {  
+                                event.preventDefault()  ; 
+                                var Id = $("#productId{{$product->id}}").val();  
+                                $.ajax({
+                                    url:  '{{url('cart/add')}}/{{$product->id}}',
+                                    type: 'GET', 
+                                    data:  { id: Id }, 
+                                    success: function(response)
+                                        {  
+                                            $(".modalitem_add{{$product->id}}").text('Success Added');  
+                                            $("#myModal{{$product->id}}").modal('toggle');
+                                            $("#product{{$product->id}}").fadeOut(400);   
+                                            $("#newproduct{{$product->id}}").fadeOut(400);   
+                                            $num = parseInt($('#cartcountitem').text(),10) + 1;
+                                            $('#cartcountitem').text($num) ;  
+                                        },  
+                                    })  
+                            }));     
+                    }); 
+                </script>
+            
+        </div>
         </div>
     </div>
     @endforeach
@@ -190,7 +246,7 @@
 
                 @foreach($new_products as $newproduct) 
 
-                <li>
+                <li id="newproduct{{$newproduct->id}}">
                     <div class="w3l_related_products_grid">
                         <div class="agile_ecommerce_tab_left dresses_grid">
                             <div class="hs-wrapper3" style="position: relative;  margin: 0 auto; overflow: hidden;"> 
@@ -206,7 +262,7 @@
                             <h5><a href="{{url('product')}}/{{$newproduct->id}}">{{$newproduct->name}}</a></h5>
                             <div class="simpleCart_shelfItem">
                                 <p class="flexisel_ecommerce_cart"><span>$312</span> <i class="item_price">${{$newproduct->price}}</i></p>
-                                <p><a class="item_add" href="{{url('cart/add')}}/{{$newproduct->id}}">Add to cart</a></p>
+                                <p><a class="newitem_add{{$newproduct->id}}" href="{{url('cart/add')}}/{{$newproduct->id}}">Add to cart</a></p>
                             </div>
                         </div>      
                     </div>
@@ -241,6 +297,32 @@
                     });
                 </script>
                 <script type="text/javascript" src="{{ asset('web') }}/js/jquery.flexisel.js"></script>
+                
+                <script> 
+                    $(document).ready(function() {  
+                    $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                        });  
+                        @foreach($new_products as $newproduct)    
+                            $('.newitem_add{{$newproduct->id}}').on( 'click' , (function(event) {  
+                                event.preventDefault()  ; 
+                                var Id = $("#newproduct{{$newproduct->id}}").val();  
+                                $.ajax({
+                                    url:  '{{url('cart/add')}}/{{$newproduct->id}}',
+                                    type: 'GET', 
+                                    data:  { id: Id }, 
+                                    success: function(response)
+                                        {  
+                                            $("#newproduct{{$newproduct->id}}").fadeOut(400);  
+                                            $("#product{{$newproduct->id}}").fadeOut(400);   
+                                            $num = parseInt($('#cartcountitem').text(),10);
+                                            $('#cartcountitem').text($num + 1) ;  
+                                        },  
+                                    })  
+                            }));    
+                        @endforeach 
+                    }); 
+                </script>
         </div>
     </div>  
 
@@ -264,12 +346,38 @@
    
                             <div class="modal_body_right_cart simpleCart_shelfItem">
                                 <p><span>$3110</span> <i class="item_price">${{$newproduct->price}}</i></p>
-                                <p><a class="item_add" href="{{url('cart/add')}}/{{$newproduct->id}}">Add to cart </a></p>
+                                <p><a class="newmodalitem_add{{$newproduct->id}}" href="{{url('cart/add')}}/{{$newproduct->id}}">Add to cart </a></p>
                             </div> 
                         </div>
                         <div class="clearfix"> </div>
                     </div>
                 </section>
+                
+                <script> 
+                    $(document).ready(function() {  
+                    $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                        });   
+                            $('.newmodalitem_add{{$newproduct->id}}').on( 'click' , (function(event) {  
+                                event.preventDefault()  ; 
+                                var Id = $("#productId{{$newproduct->id}}").val();  
+                                $.ajax({
+                                    url:  '{{url('cart/add')}}/{{$newproduct->id}}',
+                                    type: 'GET', 
+                                    data:  { id: Id }, 
+                                    success: function(response)
+                                        {  
+                                            $(".modalitem_add{{$newproduct->id}}").text('Success Added');  
+                                            $("#newModal{{$newproduct->id}}").modal('toggle');
+                                            $("#newproduct{{$newproduct->id}}").fadeOut(400);   
+                                            $("#product{{$newproduct->id}}").fadeOut(400);   
+                                            $num = parseInt($('#cartcountitem').text(),10) + 1;
+                                            $('#cartcountitem').text($num) ;  
+                                        },  
+                                    })  
+                            }));     
+                    }); 
+                </script>
             </div>
         </div>
     </div>

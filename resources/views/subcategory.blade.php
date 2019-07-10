@@ -98,7 +98,7 @@
 
                     @foreach($products as $product)
 
-                        <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses">
+                    <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses" id="product{{$product->id}}">
                             <div class="agile_ecommerce_tab_left dresses_grid">
                                 <div class=" hs-wrapper2" style="position: relative;  margin: 0 auto; overflow: hidden;">
                                     <img src="{{ asset('uploads/product') }}/{{$product->photo}}" alt=" " class="img-responsive" /> 
@@ -138,41 +138,28 @@
         </div>
     </div>   
 
-                    <script>
-
-                    $(document).ready(function() {  
-                      $.ajaxSetup({
-                            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-                          }); 
- 
-                        @foreach($products as $product)  
-               
-                        $(".item_added{{$product->id}}").hide(); 
-
-                            $('.item_add{{$product->id}}').on( 'click' , (function(event) {  
-                                event.preventDefault()  ;
-
-                                var Id = $("#productId{{$product->id}}").val(); 
-
-                                $.ajax({
-                                    url:  '{{url('cart/add')}}/{{$product->id}}',
-                                    type: 'GET', 
-                                    data:  { id: Id }, 
-                                    success: function(response)
-                                        { 
-                                            $(".item_add{{$product->id}}").fadeOut(400, function() { 
-                                                $(".item_added{{$product->id}}").fadeIn(400); 
-                                            }); 
-                                            console.log('done');  
-                                        },  
-                                    })  
-                            }));   
-
-               
-                        @endforeach 
-                    });
-
-                    </script>
+    <script> 
+        $(document).ready(function() {  
+        $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            });  
+            @foreach($products as $product)    
+                $('.item_add{{$product->id}}').on( 'click' , (function(event) {  
+                    event.preventDefault()  ; 
+                    var Id = $("#productId{{$product->id}}").val();  
+                    $.ajax({
+                        url:  '{{url('cart/add')}}/{{$product->id}}',
+                        type: 'GET', 
+                        data:  { id: Id }, 
+                        success: function(response)
+                            {  
+                                $("#product{{$product->id}}").fadeOut(400);  
+                            },  
+                        })  
+                }));    
+            @endforeach 
+        }); 
+    </script>
  
 
 {{-- modal for subcategory products --}}

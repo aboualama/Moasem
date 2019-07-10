@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\CartproductScope;
 
 class product extends Model
 {
@@ -28,5 +29,15 @@ class product extends Model
 
         return $this->hasMany(comment::class);
     }
+
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new CartproductScope);
+    }
+
 }
 

@@ -31,11 +31,9 @@ class socialcontroller extends Controller
 
     public function store(Request $request)
     { 
-        $data = $this->validate(request(), [
-                
+        $data = $this->validate(request(), [ 
                 'name'        => 'required',  
-                'link'        => 'required',   
-                'img'         => 'required',        
+                'link'        => 'required',          
             ]);   
 
             if (request()->hasFile('img')) 

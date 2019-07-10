@@ -32,7 +32,7 @@
             <div class="cart box_1">
                 <a href="{{url('/cart')}}">
                     <div class="total">
-                    <span>${{Cart::total()}}</span> ({{Cart::count() }} items)</div>   {{-- without Tax Cart::subtotal(); --}}
+                    <span>${{Cart::total()}}</span> (<span id="cartcountitem">{{Cart::count() }}</span>  items)</div>   {{-- without Tax Cart::subtotal(); --}}
                     <img src="{{ asset('web') }}/images/bag.png" alt="" />
                 </a>
                 <p><a href="{{url('/cart/destroy')}}" class="simpleCart_empty">Empty Cart</a></p>

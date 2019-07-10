@@ -54,7 +54,7 @@
                     <thead>
                         <tr>
                             <th>SL No.</th> 
-                            <th>Product</th>
+                            <th style="width: 40%;">Product</th>
                             <th>Quality</th>
                             <th>Product Name</th>
                             <th>Service Charges</th>
@@ -67,7 +67,7 @@
                         <td class="invert">{{$cartItem->id * 6241}}</td> 
                         <td class="invert-image">
                             <a href="{{url('product')}}/{{$cartItem->id}}">
-                                <img src="{{ asset('web') }}/images/{{$cartItem->options->photo}}" alt=" " class="img-responsive" />
+                                <img src="{{ asset('uploads/product') }}/{{$cartItem->options->photo}}" alt=" " class="img-responsive" />
                             </a>
                         </td>
                         <td class="invert">
@@ -228,7 +228,7 @@
                     <div class="w3l_related_products_grid">
                         <div class="agile_ecommerce_tab_left dresses_grid">
                             <div class="hs-wrapper3" style="position: relative;  margin: 0 auto; overflow: hidden;"> 
-                                <img src="{{ asset('web/images') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
+                                <img src="{{ asset('uploads/product') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
                                 <div class="w3_hs_bottom">
                                     <div class="flex_ecommerce">
                                         <a href="{{$newproduct->name}}" data-toggle="modal" data-target="#newModal{{$newproduct->id}}">
@@ -289,7 +289,7 @@
                 <section>
                     <div class="modal-body">
                         <div class="col-md-5 modal_body_left">
-                            <img src="{{ asset('web/images') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
+                            <img src="{{ asset('uploads/product') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
                         </div>
                         <div class="col-md-7 modal_body_right">
                             <h4> {{$newproduct->name}}</h4>
