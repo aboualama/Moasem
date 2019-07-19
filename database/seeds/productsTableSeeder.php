@@ -28,11 +28,11 @@ class productsTableSeeder extends Seeder
 	    // for($j = 1; $j < 1000 ; $j++){         if you need 1000000 records and make $i < 1000
 	        for($i = 1; $i <= 20 ; $i++){
 	             $product_data[] = [
-			 		'name'           =>  str_random(6) .' mobile' ,    
+			 		'name'           =>  str_random(6) .' dresses' ,    
 					'description'    =>  str_random(10),
 					'price'          =>  rand(1 , 1000), 
-					'subcategory_id' =>  rand(2 , 6),  
-					'brand_id'       =>  rand(4 , 8) , 
+					'subcategory_id' =>  rand(2 , 8),  
+					'brand_id'       =>  rand(3 , 4) , 
 					'admin_id'       =>  1 ,  
 					'photo'          =>  rand(10 , 40) . '.jpg',   
 	             ];
