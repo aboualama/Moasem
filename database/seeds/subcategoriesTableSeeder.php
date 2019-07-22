@@ -17,7 +17,7 @@ class subcategoriesTableSeeder extends Seeder
 	             $subcategory_data[] = [
 			 		'name'           =>  str_random(6) .' clothes' ,    
 					'description'    =>  str_random(10),  
-					'img'          =>  rand(10 , 40) . '.jpg',   
+					'img'            =>  rand(10 , 40) . '.jpg',   
 	             ];
 	        }
 

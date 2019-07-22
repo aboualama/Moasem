@@ -51,476 +51,111 @@ Home
  
         <div class="col-md-7 wthree_banner_bottom_right">
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                <ul id="myTab" class="nav nav-tabs" role="tablist">
-                    
-                    <li role="presentation" class="active"><a href="#{{ $a_category->id }}" id="{{ $a_category->id }}-tab" role="tab" data-toggle="tab" aria-controls="home-tab">{{ first_word($a_category->name)   }}</a></li>
-                    
-                    <li role="presentation"><a href="#{{ $b_category->id }}" role="tab" id="{{ $b_category->id }}-tab" data-toggle="tab" aria-controls="{{ $b_category->name }}">{{ first_word($b_category->name) }}</a></li>
-                    
-                    <li role="presentation"><a href="#{{ $c_category->id }}" role="tab" id="{{ $c_category->id  }}-tab" data-toggle="tab" aria-controls="{{ $c_category->name }}">{{ first_word($c_category->name)  }}</a></li>
-                    
-                    <li role="presentation"><a href="#{{ $d_category->id  }}" role="tab" id="{{$d_category->id}}-tab" data-toggle="tab" aria-controls="{{ $d_category->name  }}">{{ first_word($d_category->name)  }}</a></li>
-                    
-                    <li role="presentation"><a href="#{{ $e_category->id  }}" role="tab" id="{{ $e_category->id  }}-tab" data-toggle="tab" aria-controls="{{ $e_category->name  }}">{{ first_word($e_category->name)  }}</a></li>
+                <ul id="myTab" class="nav nav-tabs" role="tablist"> 
+                 
+                    @foreach($cats as $index=>$cat)   
+                       <li role="presentation" class="{{ $index == 0 ? 'active' : '' }}"><a href="#{{ $cat->id }}" id="{{ $cat->id }}-tab" role="tab" data-toggle="tab" aria-controls="{{ $index == 0 ? 'home-tab' : '' }}">{{ first_word($cat->name) }}</a></li> 
+                    @endforeach 
                 </ul>
                 <div id="myTabContent" class="tab-content">
+ 
+                    @foreach($cats as $index=>$cat)
+                        <div role="tabpanel" class="tab-pane fade {{ $index == 0 ? 'active' : '' }} in" id="{{ $cat->id }}" aria-controls="{{ $index == 0 ? 'home-tab' : '' }}">
+                            <div class="agile_ecommerce_tabs">
 
-
-                    <div role="tabpanel" class="tab-pane fade active in" id="{{ $a_category->id }}" aria-labelledby="home-tab">
-                        <div class="agile_ecommerce_tabs">
-
-                            @foreach($a_category->products->take(3) as $a_tap_pro)
-                            <div class="col-md-4 agile_ecommerce_tab_left">
-                                <div style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/uploads/product') }}/{{$a_tap_pro->photo}}"  class="img-responsive" /> 
-                                    <div class="w3_hs_bottom">
-                                        <ul>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModa{{$a_tap_pro->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
+                                @foreach($cat->products->take(3) as $a_tap_pro)
+                                <div class="col-md-4 agile_ecommerce_tab_left">
+                                    <div style="position: relative;  margin: 0 auto; overflow: hidden;">
+                                        <img src="{{ asset('/uploads/product') }}/{{$a_tap_pro->photo}}"  class="img-responsive" /> 
+                                        <div class="w3_hs_bottom">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#myModa{{$a_tap_pro->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h5><a href="{{url('product')}}/{{$a_tap_pro->id}}">{{$a_tap_pro->name}} </a></h5>
+                                    <div class="simpleCart_shelfItem">
+                                        <p><span>$320</span> <i class="item_price">${{$a_tap_pro->price}}</i></p>
+                                        <p><a class="item_add" href="{{url('cart/add')}}/{{$a_tap_pro->id}}">Add to cart</a></p>
                                     </div>
                                 </div>
-                                <h5><a href="{{url('product')}}/{{$a_tap_pro->id}}">{{$a_tap_pro->name}} </a></h5>
-                                <div class="simpleCart_shelfItem">
-                                    <p><span>$320</span> <i class="item_price">${{$a_tap_pro->price}}</i></p>
-                                    <p><a class="item_add" href="{{url('cart/add')}}/{{$a_tap_pro->id}}">Add to cart</a></p>
-                                </div>
+                                @endforeach
+
+
+                                <div class="clearfix"> </div>
                             </div>
-                            @endforeach
-
-
-                            <div class="clearfix"> </div>
                         </div>
-                    </div>
-
-
-                    <div role="tabpanel" class="tab-pane fade" id="{{ $b_category->id }}" aria-labelledby="{{ $b_category->name }}">
-                        <div class="agile_ecommerce_tabs">
-
-                            @foreach($b_category->products->take(3) as $b_tap_pro)
-                            <div class="col-md-4 agile_ecommerce_tab_left">
-                                <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/uploads/product') }}/{{$b_tap_pro->photo}}" alt=" " class="img-responsive" /> 
-                                    <div class="w3_hs_bottom">
-                                        <ul>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModa{{$b_tap_pro->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h5><a href="{{url('product')}}/{{$b_tap_pro->id}}">{{$b_tap_pro->name}} </a></h5>
-                                <div class="simpleCart_shelfItem">
-                                    <p><span>$320</span> <i class="item_price">${{$b_tap_pro->price}}</i></p>
-                                    <p><a class="item_add" href="{{url('cart/add')}}/{{$b_tap_pro->id}}">Add to cart</a></p>
-                                </div>
-                            </div>
-                            @endforeach
-
-
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-
-
-                    <div role="tabpanel" class="tab-pane fade" id="{{$c_category->id}}" aria-labelledby="{{ $c_category->name }}">
-                        <div class="agile_ecommerce_tabs">
-
-                            @foreach($c_category->products->take(3) as $c_tap_pro)
-                            <div class="col-md-4 agile_ecommerce_tab_left">
-                                <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/uploads/product') }}/{{$c_tap_pro->photo}}" alt=" " class="img-responsive" /> 
-                                    <div class="w3_hs_bottom">
-                                        <ul>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModa{{$c_tap_pro->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h5><a href="{{url('product')}}/{{$c_tap_pro->id}}">{{$c_tap_pro->name}} </a></h5>
-                                <div class="simpleCart_shelfItem">
-                                    <p><span>$320</span> <i class="item_price">${{$c_tap_pro->price}}</i></p>
-                                    <p><a class="item_add" href="{{url('cart/add')}}/{{$c_tap_pro->id}}">Add to cart</a></p>
-                                </div>
-                            </div>
-                            @endforeach
-
-
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-
-
-                    <div role="tabpanel" class="tab-pane fade" id="{{$d_category->id}}" aria-labelledby="{{ $d_category->name }}">
-                        <div class="agile_ecommerce_tabs">
-
-                            @foreach($d_category->products->take(3) as $d_tap_pro)
-                            <div class="col-md-4 agile_ecommerce_tab_left">
-                                <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/uploads/product') }}/{{$d_tap_pro->photo}}" alt=" " class="img-responsive" /> 
-                                    <div class="w3_hs_bottom">
-                                        <ul>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModa{{$d_tap_pro->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h5><a href="{{url('product')}}/{{$d_tap_pro->id}}">{{$d_tap_pro->name}} </a></h5>
-                                <div class="simpleCart_shelfItem">
-                                    <p><span>$320</span> <i class="item_price">${{$d_tap_pro->price}}</i></p>
-                                    <p><a class="item_add" href="{{url('cart/add')}}/{{$d_tap_pro->id}}">Add to cart</a></p>
-                                </div>
-                            </div>
-                            @endforeach
-
-
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-
-
-                    <div role="tabpanel" class="tab-pane fade" id="{{$e_category->id}}" aria-labelledby="{{ $e_category->name }}">
-                        <div class="agile_ecommerce_tabs">
-
-                            @foreach($e_category->products->take(3) as $e_tap_pro)
-                            <div class="col-md-4 agile_ecommerce_tab_left">
-                                <div  style="position: relative;  margin: 0 auto; overflow: hidden;">
-                                    <img src="{{ asset('/uploads/product') }}/{{$e_tap_pro->photo}}" alt=" " class="img-responsive" /> 
-                                    <div class="w3_hs_bottom">
-                                        <ul>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModa{{$e_tap_pro->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h5><a href="{{url('product')}}/{{$e_tap_pro->id}}">{{$e_tap_pro->name}} </a></h5>
-                                <div class="simpleCart_shelfItem">
-                                    <p><span>$320</span> <i class="item_price">${{$e_tap_pro->price}}</i></p>
-                                    <p><a class="item_add" href="{{url('cart/add')}}/{{$e_tap_pro->id}}">Add to cart</a></p>
-                                </div>
-                            </div>
-                            @endforeach
-
-
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-
+                    @endforeach 
 
                 </div>
             </div>
 
 
             <!--modal -->
-                @foreach($a_category->products->take(3) as $a_tap_pro) 
-                    <div class="modal video-modal fade" id="myModa{{$a_tap_pro->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{$a_tap_pro->id}}">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
-                                </div>
-                                <section>
-                                    <div class="modal-body">
-                                        <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/uploads/product') }}/{{$a_tap_pro->photo}}" alt=" " class="img-responsive" />
+                    @foreach($cats as $cat)
+                        @foreach($cat->products->take(3) as $a_tap_pro) 
+                            <div class="modal video-modal fade" id="myModa{{$a_tap_pro->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{$a_tap_pro->id}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
                                         </div>
-                                        <div class="col-md-7 modal_body_right">
-                                            <h4>a good look women's shirt</h4>
-                                            <p>Ut enim ad minim veniam, quis nostrud 
-                                                exercitation ullamco laboris nisi ut aliquip ex ea 
-                                                commodo consequat.Duis aute irure dolor in 
-                                                reprehenderit in voluptate velit esse cillum dolore 
-                                                eu fugiat nulla pariatur. Excepteur sint occaecat 
-                                                cupidatat non proident, sunt in culpa qui officia 
-                                                deserunt mollit anim id est laborum.</p>
-                                            <div class="rating">
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
+                                        <section>
+                                            <div class="modal-body">
+                                                <div class="col-md-5 modal_body_left">
+                                                    <img src="{{ asset('/uploads/product') }}/{{$a_tap_pro->photo}}" alt=" " class="img-responsive" />
                                                 </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
+                                                <div class="col-md-7 modal_body_right">
+                                                    <h4>a good look women's shirt</h4>
+                                                    <p>Ut enim ad minim veniam, quis nostrud 
+                                                        exercitation ullamco laboris nisi ut aliquip ex ea 
+                                                        commodo consequat.Duis aute irure dolor in 
+                                                        reprehenderit in voluptate velit esse cillum dolore 
+                                                        eu fugiat nulla pariatur. Excepteur sint occaecat 
+                                                        cupidatat non proident, sunt in culpa qui officia 
+                                                        deserunt mollit anim id est laborum.</p>
+                                                    <div class="rating">
+                                                        <div class="rating-left">
+                                                            <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
+                                                        </div>
+                                                        <div class="rating-left">
+                                                            <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
+                                                        </div>
+                                                        <div class="rating-left">
+                                                            <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
+                                                        </div>
+                                                        <div class="rating-left">
+                                                            <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
+                                                        </div>
+                                                        <div class="rating-left">
+                                                            <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
+                                                        </div>
+                                                        <div class="clearfix"> </div>
+                                                    </div>
+                                                    <div class="modal_body_right_cart simpleCart_shelfItem">
+                                                        <p><span>$320</span> <i class="item_price">$250</i></p>
+                                                        <p><a class="item_add" href="#">Add to cart {{$a_tap_pro->id}}</a></p>
+                                                    </div>
+                                                    <h5>Color</h5>
+                                                    <div class="color-quality">
+                                                        <ul>
+                                                            <li><a href="#"><span></span>Red</a></li>
+                                                            <li><a href="#" class="brown"><span></span>Yellow</a></li>
+                                                            <li><a href="#" class="purple"><span></span>Purple</a></li>
+                                                            <li><a href="#" class="gray"><span></span>Violet</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                                 <div class="clearfix"> </div>
                                             </div>
-                                            <div class="modal_body_right_cart simpleCart_shelfItem">
-                                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                                <p><a class="item_add" href="#">Add to cart {{$a_tap_pro->id}}</a></p>
-                                            </div>
-                                            <h5>Color</h5>
-                                            <div class="color-quality">
-                                                <ul>
-                                                    <li><a href="#"><span></span>Red</a></li>
-                                                    <li><a href="#" class="brown"><span></span>Yellow</a></li>
-                                                    <li><a href="#" class="purple"><span></span>Purple</a></li>
-                                                    <li><a href="#" class="gray"><span></span>Violet</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"> </div>
+                                        </section>
                                     </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach($b_category->products->take(3) as $b_tap_pro) 
-                    <div class="modal video-modal fade" id="myModa{{$b_tap_pro->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{$b_tap_pro->id}}">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
                                 </div>
-                                <section>
-                                    <div class="modal-body">
-                                        <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/uploads/product') }}/{{$b_tap_pro->photo}}" alt=" " class="img-responsive" />
-                                        </div>
-                                        <div class="col-md-7 modal_body_right">
-                                            <h4>a good look women's shirt</h4>
-                                            <p>Ut enim ad minim veniam, quis nostrud 
-                                                exercitation ullamco laboris nisi ut aliquip ex ea 
-                                                commodo consequat.Duis aute irure dolor in 
-                                                reprehenderit in voluptate velit esse cillum dolore 
-                                                eu fugiat nulla pariatur. Excepteur sint occaecat 
-                                                cupidatat non proident, sunt in culpa qui officia 
-                                                deserunt mollit anim id est laborum.</p>
-                                            <div class="rating">
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                            <div class="modal_body_right_cart simpleCart_shelfItem">
-                                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                                <p><a class="item_add" href="#">Add to cart {{$b_tap_pro->id}}</a></p>
-                                            </div>
-                                            <h5>Color</h5>
-                                            <div class="color-quality">
-                                                <ul>
-                                                    <li><a href="#"><span></span>Red</a></li>
-                                                    <li><a href="#" class="brown"><span></span>Yellow</a></li>
-                                                    <li><a href="#" class="purple"><span></span>Purple</a></li>
-                                                    <li><a href="#" class="gray"><span></span>Violet</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                </section>
                             </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach($c_category->products->take(3) as $c_tap_pro) 
-                    <div class="modal video-modal fade" id="myModa{{$c_tap_pro->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{$c_tap_pro->id}}">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
-                                </div>
-                                <section>
-                                    <div class="modal-body">
-                                        <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/uploads/product') }}/{{$c_tap_pro->photo}}" alt=" " class="img-responsive" />
-                                        </div>
-                                        <div class="col-md-7 modal_body_right">
-                                            <h4>a good look women's shirt</h4>
-                                            <p>Ut enim ad minim veniam, quis nostrud 
-                                                exercitation ullamco laboris nisi ut aliquip ex ea 
-                                                commodo consequat.Duis aute irure dolor in 
-                                                reprehenderit in voluptate velit esse cillum dolore 
-                                                eu fugiat nulla pariatur. Excepteur sint occaecat 
-                                                cupidatat non proident, sunt in culpa qui officia 
-                                                deserunt mollit anim id est laborum.</p>
-                                            <div class="rating">
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                            <div class="modal_body_right_cart simpleCart_shelfItem">
-                                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                                <p><a class="item_add" href="#">Add to cart {{$c_tap_pro->id}}</a></p>
-                                            </div>
-                                            <h5>Color</h5>
-                                            <div class="color-quality">
-                                                <ul>
-                                                    <li><a href="#"><span></span>Red</a></li>
-                                                    <li><a href="#" class="brown"><span></span>Yellow</a></li>
-                                                    <li><a href="#" class="purple"><span></span>Purple</a></li>
-                                                    <li><a href="#" class="gray"><span></span>Violet</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach($d_category->products->take(3) as $d_tap_pro) 
-                    <div class="modal video-modal fade" id="myModa{{$d_tap_pro->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{$d_tap_pro->id}}">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
-                                </div>
-                                <section>
-                                    <div class="modal-body">
-                                        <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/uploads/product') }}/{{$d_tap_pro->photo}}" alt=" " class="img-responsive" />
-                                        </div>
-                                        <div class="col-md-7 modal_body_right">
-                                            <h4>a good look women's shirt</h4>
-                                            <p>Ut enim ad minim veniam, quis nostrud 
-                                                exercitation ullamco laboris nisi ut aliquip ex ea 
-                                                commodo consequat.Duis aute irure dolor in 
-                                                reprehenderit in voluptate velit esse cillum dolore 
-                                                eu fugiat nulla pariatur. Excepteur sint occaecat 
-                                                cupidatat non proident, sunt in culpa qui officia 
-                                                deserunt mollit anim id est laborum.</p>
-                                            <div class="rating">
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                            <div class="modal_body_right_cart simpleCart_shelfItem">
-                                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                                <p><a class="item_add" href="#">Add to cart {{$d_tap_pro->id}}</a></p>
-                                            </div>
-                                            <h5>Color</h5>
-                                            <div class="color-quality">
-                                                <ul>
-                                                    <li><a href="#"><span></span>Red</a></li>
-                                                    <li><a href="#" class="brown"><span></span>Yellow</a></li>
-                                                    <li><a href="#" class="purple"><span></span>Purple</a></li>
-                                                    <li><a href="#" class="gray"><span></span>Violet</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach($e_category->products->take(3) as $e_tap_pro) 
-                    <div class="modal video-modal fade" id="myModa{{$e_tap_pro->id}}" tabindex="-1" role="dialog" aria-labelledby="myModal{{$e_tap_pro->id}}">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
-                                </div>
-                                <section>
-                                    <div class="modal-body">
-                                        <div class="col-md-5 modal_body_left">
-                                            <img src="{{ asset('/uploads/product') }}/{{$e_tap_pro->photo}}" alt=" " class="img-responsive" />
-                                        </div>
-                                        <div class="col-md-7 modal_body_right">
-                                            <h4>a good look women's shirt</h4>
-                                            <p>Ut enim ad minim veniam, quis nostrud 
-                                                exercitation ullamco laboris nisi ut aliquip ex ea 
-                                                commodo consequat.Duis aute irure dolor in 
-                                                reprehenderit in voluptate velit esse cillum dolore 
-                                                eu fugiat nulla pariatur. Excepteur sint occaecat 
-                                                cupidatat non proident, sunt in culpa qui officia 
-                                                deserunt mollit anim id est laborum.</p>
-                                            <div class="rating">
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star-.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="rating-left">
-                                                    <img src="{{ asset('web') }}/images/star.png" alt=" " class="img-responsive" />
-                                                </div>
-                                                <div class="clearfix"> </div>
-                                            </div>
-                                            <div class="modal_body_right_cart simpleCart_shelfItem">
-                                                <p><span>$320</span> <i class="item_price">$250</i></p>
-                                                <p><a class="item_add" href="#">Add to cart {{$e_tap_pro->id}}</a></p>
-                                            </div>
-                                            <h5>Color</h5>
-                                            <div class="color-quality">
-                                                <ul>
-                                                    <li><a href="#"><span></span>Red</a></li>
-                                                    <li><a href="#" class="brown"><span></span>Yellow</a></li>
-                                                    <li><a href="#" class="purple"><span></span>Purple</a></li>
-                                                    <li><a href="#" class="gray"><span></span>Violet</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
+                        @endforeach
+                    @endforeach
  
                  
             </div>
@@ -621,96 +256,9 @@ Home
 <!-- //special-deals -->
 <!-- new-products --> 
 
-    <div class="w3l_related_products">
-        <div class="container">
-            <h3>New Products</h3>
-            <ul id="flexiselDemo2">  
-
-                @foreach($new_products as $newproduct) 
-
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left dresses_grid">
-                            <div class="hs-wrapper3" style="position: relative;  margin: 0 auto; overflow: hidden;"> 
-                                <img src="{{ asset('uploads/product') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom">
-                                    <div class="flex_ecommerce">
-                                        <a href="{{$newproduct->name}}" data-toggle="modal" data-target="#newModal{{$newproduct->id}}">
-                                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h5><a href="{{url('product')}}/{{$newproduct->id}}">{{$newproduct->name}}</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p class="flexisel_ecommerce_cart"><span>$312</span> <i class="item_price">${{$newproduct->price}}</i></p>
-                                <p><a class="item_add" href="{{url('cart/add')}}/{{$newproduct->id}}">Add to cart</a></p>
-                            </div>
-                        </div>      
-                    </div>
-                </li> 
-                @endforeach
-            </ul>
-                <script type="text/javascript">
-                    $(window).load(function() {
-                        $("#flexiselDemo2").flexisel({
-                            visibleItems:4,
-                            animationSpeed: 1000,
-                            autoPlay: true,
-                            autoPlaySpeed: 3000,            
-                            pauseOnHover: true,
-                            enableResponsiveBreakpoints: true,
-                            responsiveBreakpoints: { 
-                                portrait: { 
-                                    changePoint:480,
-                                    visibleItems: 1
-                                }, 
-                                landscape: { 
-                                    changePoint:640,
-                                    visibleItems:2
-                                },
-                                tablet: { 
-                                    changePoint:768,
-                                    visibleItems: 3
-                                }
-                            }
-                        });
-                        
-                    });
-                </script>
-                <script type="text/javascript" src="{{ asset('web') }}/js/jquery.flexisel.js"></script>
-        </div>
-    </div>  
-{{-- modal for new products --}}
-
-    @foreach($new_products as $newproduct) 
-    <div class="modal video-modal fade" id="newModal{{$newproduct->id}}" tabindex="-1" role="dialog" aria-labelledby="newModal{{$newproduct->id}}">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
-                </div>
-                <section>
-                    <div class="modal-body">
-                        <div class="col-md-5 modal_body_left">
-                            <img src="{{ asset('uploads/product') }}/{{$newproduct->photo}}" alt=" " class="img-responsive" />
-                        </div>
-                        <div class="col-md-7 modal_body_right">
-                            <h4> {{$newproduct->name}}</h4>
-                            <p>{{$newproduct->description}}. </p>
+ 
+@include('newprod') 
    
-                            <div class="modal_body_right_cart simpleCart_shelfItem">
-                                <p><span>$3110</span> <i class="item_price">${{$newproduct->price}}</i></p>
-                                <p><a class="item_add" href="{{url('cart/add')}}/{{$newproduct->id}}">Add to cart </a></p>
-                            </div> 
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-    @endforeach
 
 <!-- //new-products -->
 <!-- top-brands -->

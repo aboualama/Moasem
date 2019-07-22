@@ -22,16 +22,12 @@ class cartcontroller extends Controller
     {
         $charge = 45 ;
         $cart_item =  Cart::content();
-        $new_products = product::orderBy('created_at' , 'desc')->take(10)->get();  
-        return view('checkout' , compact('cart_item' , 'new_products' , 'charge'));
+        return view('checkout' , compact('cart_item' , 'charge'));
     }
 
     public function add($id)
     {
-        $ss = [];
-        $ss[] = $id;  
-        Session::put('id' , $ss);
-    	$product = product::find($id);
+    	$product = product::withoutGlobalScope(CartproductScope::class)->find($id);
     	Cart::add($id,$product->name,1,$product->price , ['photo' => $product->photo]);
         return response()->json(); 
     }

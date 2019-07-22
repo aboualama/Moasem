@@ -24,6 +24,7 @@ class ViewComposer {
 		$view->with('inactiveusers', user::where('status' , 'inactive')->count() );    
 		$view->with('all_subcategories', subcategory::all() );   
 		$view->with('all_products', product::all() );   
+        $view->with('new_products' , product::orderBy('created_at' , 'desc')->take(10)->get());  
 		$view->with('all_brands', brand::all() );      
 		$view->with('thepages', page::all() );   
 		$view->with('sociallinks', social::all() );   
